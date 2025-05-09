@@ -1,0 +1,17 @@
+class Solution(object):
+    def invertTree(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: Optional[TreeNode]
+        """
+        if root is None:
+            return None
+        
+        rightSide=self.invertTree(root.right)
+        leftSide=self.invertTree(root.left)
+        
+        root.right=leftSide
+        root.left=rightSide
+        
+        return root
+        
